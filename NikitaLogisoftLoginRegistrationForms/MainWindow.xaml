@@ -9,11 +9,61 @@
         
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
-        FontFamily="{materialDesign:MaterialDesignFont}">
-    <Grid>
+        FontFamily="{materialDesign:MaterialDesignFont}"
         
+        AllowsTransparency="True" Background="Transparent"
+        ResizeMode="NoResize" WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+        </Grid>
+
+        <Border CornerRadius="10" Grid.RowSpan="2" Padding="0 70">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#F3E0D7" Offset="0"/>
+                    <GradientStop Color="#F06292" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <StackPanel HorizontalAlignment="Center">
+                <materialDesign:PackIcon 
+                    Kind="AccountCircleOutline" Foreground="White" 
+                    HorizontalAlignment="Center" Height="52" Width="70" />
+                <TextBlock
+                    Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                    Text="Sign in" Foreground="White"
+                    HorizontalAlignment="Center" Margin="0 0 0 10"/>
+                <TextBox
+                    materialDesign:HintAssist.Hint="Email"
+                    HorizontalAlignment="Center" Margin="0 0 0 10"
+                    BorderBrush="White" Foreground="White" Width="200"/>
+                <PasswordBox
+                    materialDesign:HintAssist.Hint="Password"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    HorizontalAlignment="Center" Margin="0 0 0 15"
+                    BorderBrush="White" Foreground="White" Width="200"/>
+                <Button
+                    Content="SIGN IN"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                    ToolTip="Resource name: MaterialDesignRaisedLightButton"
+                    Margin="0 0 0 10" Foreground="White" Opacity="0.9"/>
+                <TextBlock
+                    Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                    Text="Forgot password?" HorizontalAlignment="Center"
+                    Cursor="Hand" Opacity="0.9"/>
+
+            </StackPanel>
+        </Border>
+
+
     </Grid>
 </Window>

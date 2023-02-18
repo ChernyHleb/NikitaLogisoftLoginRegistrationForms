@@ -24,5 +24,13 @@ namespace NikitaLogisoftLoginRegistrationForms
         {
             InitializeComponent();
         }
+
+        private void Window_MouseDown(Object sender, MouseButtonEventArgs e)
+        {
+            if(e.LeftButton== MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
     }
 }
