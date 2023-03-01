@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using RestSharp;
 using Newtonsoft.Json;
 using NikitaLogisoftLoginRegistrationForms.models;
+using System.Security.Policy;
 
 namespace NikitaLogisoftLoginRegistrationForms
 {
@@ -57,6 +58,13 @@ namespace NikitaLogisoftLoginRegistrationForms
             }
 
             return null;
+        }
+
+        public void PostUser(UserNoId user)
+        {
+            var request = new RestRequest("users");
+            request.AddBody(JsonConvert.SerializeObject(user));
+            client.Post(request);
         }
     }
 }

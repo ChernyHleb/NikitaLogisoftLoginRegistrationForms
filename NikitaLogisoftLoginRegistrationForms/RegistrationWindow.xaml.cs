@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NikitaLogisoftLoginRegistrationForms.models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,58 @@ namespace NikitaLogisoftLoginRegistrationForms
             {
                 DragMove();
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Checking if all the fields have values
+            string errorMessage = "";
+            if (FirstNameTextBox.Text.Equals(""))
+            {
+                errorMessage += "Insert first name\n";
+            }
+            if (LastNameTextBox.Text.Equals(""))
+            {
+                errorMessage += "Insert last name\n";
+            }
+            if (EmailTextBox.Text.Equals(""))
+            {
+                errorMessage += "Insert email\n";
+            }
+            if (PasswordTextBox.Password.Equals(""))
+            {
+                errorMessage += "Insert password\n";
+            }
+            if (ConfirmPasswordTextBox.Password.Equals(""))
+            {
+                errorMessage += "Confirm password";
+            }
+
+            if (!errorMessage.Equals(""))
+            {
+                MessageBox.Show(errorMessage);
+                return;
+            }
+
+            ApiCommunicator apiCommunicator = new ApiCommunicator();
+
+            // Checking if user with this email already exists
+            ApiResponse<Email> getEmailResponse = apiCommunicator.GetEmails();
+            if (getEmailResponse.data.Count != 0 && getEmailResponse.data.Exists(item => item.email.Equals(EmailTextBox.Text)))
+            {
+                MessageBox.Show("User with this email already exists");
+                return;
+            }
+
+            UserNoId user = new UserNoId();
+            user.first_name = FirstNameTextBox.Text;
+            user.last_name = LastNameTextBox.Text;
+            user.email = EmailTextBox.Text;
+            user.pwd = PasswordTextBox.Password;
+
+            apiCommunicator.PostUser(user);
+
+            MessageBox.Show("Success");
         }
     }
 }

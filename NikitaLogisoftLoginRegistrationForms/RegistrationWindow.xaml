@@ -41,32 +41,37 @@
                         Text="Registration" Foreground="White"
                         HorizontalAlignment="Center" Margin="0 0 0 10"/>
                 <TextBox
-                        materialDesign:HintAssist.Hint="First Name"
-                        HorizontalAlignment="Center" Margin="0 0 0 10"
-                        BorderBrush="White" Foreground="White" Width="200"/>
+                    x:Name="FirstNameTextBox"
+                    materialDesign:HintAssist.Hint="First Name"
+                    HorizontalAlignment="Center" Margin="0 0 0 10"
+                    BorderBrush="White" Foreground="White" Width="200"/>
                 <TextBox
-                        materialDesign:HintAssist.Hint="Last Name"
-                        HorizontalAlignment="Center" Margin="0 0 0 10"
-                        BorderBrush="White" Foreground="White" Width="200"/>
+                    x:Name="LastNameTextBox"
+                    materialDesign:HintAssist.Hint="Last Name"
+                    HorizontalAlignment="Center" Margin="0 0 0 10"
+                    BorderBrush="White" Foreground="White" Width="200"/>
                 <TextBox
-                        materialDesign:HintAssist.Hint="Email"
-                        HorizontalAlignment="Center" Margin="0 0 0 15"
-                        BorderBrush="White" Foreground="White" Width="200"/>
+                    x:Name="EmailTextBox"
+                    materialDesign:HintAssist.Hint="Email"
+                    HorizontalAlignment="Center" Margin="0 0 0 15"
+                    BorderBrush="White" Foreground="White" Width="200"/>
                 <PasswordBox
-                        materialDesign:HintAssist.Hint="Password"
-                        materialDesign:TextFieldAssist.HasClearButton="True"
-                        HorizontalAlignment="Center" Margin="0 0 0 10"
-                        BorderBrush="White" Foreground="White" Width="200"/>
+                    x:Name="PasswordTextBox"
+                    materialDesign:HintAssist.Hint="Password"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    HorizontalAlignment="Center" Margin="0 0 0 10"
+                    BorderBrush="White" Foreground="White" Width="200"/>
                 <PasswordBox
-                        materialDesign:HintAssist.Hint="Confirm Password"
-                        materialDesign:TextFieldAssist.HasClearButton="True"
-                        HorizontalAlignment="Center" Margin="0 0 0 15"
-                        BorderBrush="White" Foreground="White" Width="200"/>
+                    x:Name="ConfirmPasswordTextBox"
+                    materialDesign:HintAssist.Hint="Confirm Password"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    HorizontalAlignment="Center" Margin="0 0 0 15"
+                    BorderBrush="White" Foreground="White" Width="200"/>
                 <Button
                         Content="SIGN UP"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        Margin="0 0 0 10" Foreground="White" Opacity="0.9"/>
+                        Margin="0 0 0 10" Foreground="White" Opacity="0.9" Click="Button_Click"/>
             </StackPanel>
         </Border>
     </Grid>
