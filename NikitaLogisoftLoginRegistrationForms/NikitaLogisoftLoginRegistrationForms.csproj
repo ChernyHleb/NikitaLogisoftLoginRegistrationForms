@@ -118,6 +118,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="models\ApiResponse.cs" />
+    <Compile Include="models\Email.cs" />
     <Compile Include="models\User.cs" />
     <Compile Include="RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
