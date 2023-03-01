@@ -44,5 +44,19 @@ namespace NikitaLogisoftLoginRegistrationForms
 
             return null;
         }
+
+        public ApiResponse<Email> GetEmails()
+        {
+            var request = new RestRequest("emails");
+            var response = client.Get(request);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                ApiResponse<Email> content = JsonConvert.DeserializeObject<ApiResponse<Email>>(response.Content);
+                return content;
+            }
+
+            return null;
+        }
     }
 }

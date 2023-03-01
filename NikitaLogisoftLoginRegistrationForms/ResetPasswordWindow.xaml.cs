@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NikitaLogisoftLoginRegistrationForms.models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,5 +38,25 @@ namespace NikitaLogisoftLoginRegistrationForms
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {            
+            if (EmailTextBox.Text.Equals(""))
+            {
+                MessageBox.Show("Insert email");
+                return;
+            }
+
+            // making request to API to get existing emails
+            ApiCommunicator apiCommunicator = new ApiCommunicator();
+            ApiResponse<Email> response = apiCommunicator.GetEmails();
+
+            if (response.data.Count == 0 || !response.data.Exists(item => item.email.Equals(EmailTextBox.Text)))
+            {
+                MessageBox.Show("There is no user with such email");
+                return;
+            }
+
+            MessageBox.Show("Success");
+        }
     }
 }
