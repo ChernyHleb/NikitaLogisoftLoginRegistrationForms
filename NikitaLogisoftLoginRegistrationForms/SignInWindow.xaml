@@ -42,19 +42,21 @@
                     Text="Sign in" Foreground="White"
                     HorizontalAlignment="Center" Margin="0 0 0 10"/>
                 <TextBox
+                    x:Name="EmailTextBox"
                     materialDesign:HintAssist.Hint="Email"
                     HorizontalAlignment="Center" Margin="0 0 0 10"
                     BorderBrush="White" Foreground="White" Width="200"/>
                 <PasswordBox
+                    x:Name="PasswordTextBox"
                     materialDesign:HintAssist.Hint="Password"
                     materialDesign:TextFieldAssist.HasClearButton="True"
                     HorizontalAlignment="Center" Margin="0 0 0 15"
                     BorderBrush="White" Foreground="White" Width="200"/>
                 <Button
-                    Content="SIGN IN"
+                    Content="SIGN IN" x:Name="SignIn_Button"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignRaisedLightButton}"
-                    Margin="0 0 0 10" Foreground="White" Opacity="0.9"/>
+                    Margin="0 0 0 10" Foreground="White" Opacity="0.9" Click="SignIn_Button_Click"/>
                 <TextBlock
                     Style="{StaticResource MaterialDesignCaptionTextBlock}"
                     Text="Forgot password?" HorizontalAlignment="Center"
