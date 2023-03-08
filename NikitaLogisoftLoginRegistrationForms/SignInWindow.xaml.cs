@@ -60,15 +60,15 @@ namespace NikitaLogisoftLoginRegistrationForms
 
             // making request to API to get a user
             ApiCommunicator apiCommunicator = new ApiCommunicator();
-            ApiResponse<User> response = apiCommunicator.GetUserByEmail(EmailTextBox.Text);
+            List<User> response = apiCommunicator.GetUserByEmail(EmailTextBox.Text);
             
-            if (response.data.Count == 0) 
+            if (response.Count == 0) 
             { 
                 MessageBox.Show("Not a user");
                 return;
             }
 
-            User user = response.data[0];
+            User user = response[0];
             //MessageBox.Show(String.Format(
             //    "{0} {1} {2} {3} {4}", 
             //    user.id, user.first_name, user.last_name, user.email, user.pwd

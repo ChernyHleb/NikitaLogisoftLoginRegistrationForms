@@ -32,28 +32,28 @@ namespace NikitaLogisoftLoginRegistrationForms
             return null;
         }
 
-        public ApiResponse<User> GetUserByEmail(string email)
+        public List<User> GetUserByEmail(string email)
         {
             var request = new RestRequest("users/" + email);
             var response = client.Get(request);
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                ApiResponse<User> content = JsonConvert.DeserializeObject<ApiResponse<User>>(response.Content);
+                List<User> content = JsonConvert.DeserializeObject<List<User>>(response.Content);
                 return content;
             }
 
             return null;
         }
 
-        public ApiResponse<Email> GetEmails()
+        public List<Email> GetEmails()
         {
             var request = new RestRequest("emails");
             var response = client.Get(request);
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                ApiResponse<Email> content = JsonConvert.DeserializeObject<ApiResponse<Email>>(response.Content);
+                List<Email> content = JsonConvert.DeserializeObject<List<Email>>(response.Content);
                 return content;
             }
 

@@ -48,9 +48,9 @@ namespace NikitaLogisoftLoginRegistrationForms
 
             // making request to API to get existing emails
             ApiCommunicator apiCommunicator = new ApiCommunicator();
-            ApiResponse<Email> response = apiCommunicator.GetEmails();
+            List<Email> response = apiCommunicator.GetEmails();
 
-            if (response.data.Count == 0 || !response.data.Exists(item => item.email.Equals(EmailTextBox.Text)))
+            if (response.Count == 0 || !response.Exists(item => item.email.Equals(EmailTextBox.Text)))
             {
                 MessageBox.Show("There is no user with such email");
                 return;

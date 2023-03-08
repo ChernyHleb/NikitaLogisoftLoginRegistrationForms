@@ -73,8 +73,8 @@ namespace NikitaLogisoftLoginRegistrationForms
             ApiCommunicator apiCommunicator = new ApiCommunicator();
 
             // Checking if user with this email already exists
-            ApiResponse<Email> getEmailResponse = apiCommunicator.GetEmails();
-            if (getEmailResponse.data.Count != 0 && getEmailResponse.data.Exists(item => item.email.Equals(EmailTextBox.Text)))
+            List<Email> getEmailResponse = apiCommunicator.GetEmails();
+            if (getEmailResponse.Count != 0 && getEmailResponse.Exists(item => item.email.Equals(EmailTextBox.Text)))
             {
                 MessageBox.Show("User with this email already exists");
                 return;
