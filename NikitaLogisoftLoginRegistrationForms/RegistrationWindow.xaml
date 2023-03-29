@@ -46,6 +46,9 @@
                     HorizontalAlignment="Center" Margin="0 0 0 10"
                     BorderBrush="White" Foreground="White" Width="200"/>
                 <TextBox
+                    
+                    
+                    
                     x:Name="LastNameTextBox"
                     materialDesign:HintAssist.Hint="Last Name"
                     HorizontalAlignment="Center" Margin="0 0 0 10"
