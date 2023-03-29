@@ -60,7 +60,7 @@ namespace NikitaLogisoftLoginRegistrationForms
             return null;
         }
 
-        public void PostUser(UserNoId user)
+        public void PostUser(User user)
         {
             var request = new RestRequest("users");
             request.AddBody(JsonConvert.SerializeObject(user));

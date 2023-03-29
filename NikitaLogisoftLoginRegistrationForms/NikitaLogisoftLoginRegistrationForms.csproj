@@ -112,15 +112,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="ApiCommunicator.cs" />
+    <Compile Include="ApiCommunication\ApiCommunicator.cs" />
+    <Compile Include="ApiResponseModels\LoginResponse.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="models\ApiResponse.cs" />
-    <Compile Include="models\Email.cs" />
-    <Compile Include="models\User.cs" />
-    <Compile Include="models\UserNoId.cs" />
+    <Compile Include="ApiCommunication\AuthApiCommunicator.cs" />
+    <Compile Include="ApiResponseModels\ApiResponse.cs" />
+    <Compile Include="ApiResponseModels\Email.cs" />
+    <Compile Include="ApiResponseModels\User.cs" />
     <Compile Include="RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
