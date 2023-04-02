@@ -80,7 +80,7 @@ namespace NikitaLogisoftLoginRegistrationForms
                 return;
             }
 
-            UserNoId user = new UserNoId();
+            User user = new User();
             user.first_name = FirstNameTextBox.Text;
             user.last_name = LastNameTextBox.Text;
             user.email = EmailTextBox.Text;

@@ -1,4 +1,5 @@
-﻿using NikitaLogisoftLoginRegistrationForms.models;
+﻿using NikitaLogisoftLoginRegistrationForms.ApiResponseModels;
+using NikitaLogisoftLoginRegistrationForms.models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +26,11 @@ namespace NikitaLogisoftLoginRegistrationForms
         {
             InitializeComponent();
 
-            RegistrationWindow registrationWindow = new RegistrationWindow();
-            registrationWindow.Show();
+            //RegistrationWindow registrationWindow = new RegistrationWindow();
+            //registrationWindow.Show();
 
-            ResetPasswordWindow resetPasswordWindow = new ResetPasswordWindow();
-            resetPasswordWindow.Show();
+            //ResetPasswordWindow resetPasswordWindow = new ResetPasswordWindow();
+            //resetPasswordWindow.Show();
         }
 
         private void Window_MouseDown(Object sender, MouseButtonEventArgs e)
@@ -58,29 +59,51 @@ namespace NikitaLogisoftLoginRegistrationForms
                 return;
             }
 
-            // making request to API to get a user
-            ApiCommunicator apiCommunicator = new ApiCommunicator();
-            List<User> response = apiCommunicator.GetUserByEmail(EmailTextBox.Text);
-            
-            if (response.Count == 0) 
-            { 
-                MessageBox.Show("Not a user");
-                return;
-            }
+            AuthApiCommunicator auth = new AuthApiCommunicator();
 
-            User user = response[0];
-            //MessageBox.Show(String.Format(
-            //    "{0} {1} {2} {3} {4}", 
-            //    user.id, user.first_name, user.last_name, user.email, user.pwd
-            //));
+            User user = new User();
+            user.email = EmailTextBox.Text;
+            user.pwd = PasswordTextBox.Password;
 
-            if (!user.pwd.Equals(PasswordTextBox.Password))
+            LoginResponse response = null;
+
+            try
             {
-                MessageBox.Show("Incorrect password");
-                return;
+                response = auth.Login(user);
+            }
+            catch(Exception ex) 
+            { 
+                MessageBox.Show(ex.Message);
             }
 
-            MessageBox.Show("Success");
+            if(response != null)
+            {
+                MessageBox.Show(
+                    "Refresh token: " + response.refreshToken + "\n" +
+                    "Access token: " + response.accessToken);
+            }
+
+            //// making request to API to get a user
+            //ApiCommunicator apiCommunicator = new ApiCommunicator();
+            //List<User> response = apiCommunicator.GetUserByEmail(EmailTextBox.Text);
+            
+            //if (response.Count == 0) 
+            //{ 
+            //    MessageBox.Show("Not a user");
+            //    return;
+            //}
+
+            //User user = response[0];
+            ////MessageBox.Show(String.Format(
+            ////    "{0} {1} {2} {3} {4}", 
+            ////    user.id, user.first_name, user.last_name, user.email, user.pwd
+            ////));
+
+            //if (!user.pwd.Equals(PasswordTextBox.Password))
+            //{
+            //    MessageBox.Show("Incorrect password");
+            //    return;
+            //}
         }
     }
 }
